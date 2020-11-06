@@ -5,6 +5,13 @@ import axios from 'axios';
 import PokemonCard from './PokemonCard';
 
 export default class PokemonList extends Component {
+  state = {
+    url: '',
+    nextUrl: '',
+    prevUrl: '',
+    pokemon: null
+  }
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -13,6 +20,8 @@ export default class PokemonList extends Component {
       prevUrl: '',
       pokemon: null
     }
+    this.handleNextPageClick = this.handleNextPageClick.bind(this);
+    this.handlePrevPageClick = this.handlePrevPageClick.bind(this);
   }
 
   async componentDidMount() {
@@ -24,14 +33,29 @@ export default class PokemonList extends Component {
     });
   }
 
-  /*
-  nextPage(nextUrl) {
-    this.setState({ url: nextUrl });
+  async handleNextPageClick() {
+    if (this.state.nextUrl !== null) {
+      const res = await axios.get(this.state.nextUrl);
+      this.setState({
+        pokemon: res.data['results'],
+        prevUrl: res.data.previous,
+        nextUrl: res.data.next
+      });
+    }
   }
-  */
-//onClick={this.nextPage(this.state.nextUrl)}
-  render() {
 
+  async handlePrevPageClick() {
+    if (this.state.prevUrl !== null) {
+      const res = await axios.get(this.state.prevUrl);
+      this.setState({
+        pokemon: res.data['results'],
+        prevUrl: res.data.previous,
+        nextUrl: res.data.next
+      });
+    }
+  }
+
+  render() {
     return (
       <>
         { this.state.pokemon ? (
@@ -43,7 +67,8 @@ export default class PokemonList extends Component {
                 url={pokemon.url}
               />
             )) }
-            <button>Next</button>
+            <button onClick={() => {this.handlePrevPageClick()}}>Back</button>
+            <button onClick={() => {this.handleNextPageClick()}}>Next</button>
             
           </div>
         ) : (

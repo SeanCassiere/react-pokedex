@@ -10,6 +10,14 @@ const Sprite = styled.img`
 `;
 
 export default class PokemonCard extends Component {
+  state = {
+    name: '',
+    imageUrl: '',
+    imageLoading: true,
+    tooManyRequests: false,
+    pokemonIndex: ''
+  }
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -40,6 +48,7 @@ export default class PokemonCard extends Component {
           <h5 className="card-header">{this.state.pokemonIndex}</h5>
           { this.state.imageLoading ? (
             <img
+              alt="Loading..."
               src={spinner}
               style={{
                 width: '2rem',

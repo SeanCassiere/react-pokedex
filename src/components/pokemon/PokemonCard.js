@@ -10,12 +10,15 @@ const Sprite = styled.img`
 `;
 
 export default class PokemonCard extends Component {
-  state = {
-    name: '',
-    imageUrl: '',
-    imageLoading: true,
-    tooManyRequests: false,
-    pokemonIndex: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      imageUrl: '',
+      imageLoading: true,
+      tooManyRequests: false,
+      pokemonIndex: ''
+    }
   }
 
   componentDidMount() {

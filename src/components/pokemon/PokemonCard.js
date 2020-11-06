@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import spinner from '../pokemon/loading.gif';
 
 const Sprite = styled.img`
-  width: 100%;
+  width: 5rem;
   display: none;
 `;
 

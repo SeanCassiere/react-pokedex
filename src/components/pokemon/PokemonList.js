@@ -67,9 +67,25 @@ export default class PokemonList extends Component {
                 url={pokemon.url}
               />
             )) }
-            <button onClick={() => {this.handlePrevPageClick()}}>Back</button>
-            <button onClick={() => {this.handleNextPageClick()}}>Next</button>
-            
+            <nav aria-label="...">
+              <ul className="pagination">
+                <li className="page-item">
+                  <button
+                    className="page-link"
+                    href="#"
+                    tabindex="-1"
+                    onClick={() => {this.handlePrevPageClick()}}
+                  >Previous</button>
+                </li>
+                <li className="page-item">
+                  <button
+                    className="page-link"
+                    href="#"
+                    onClick={() => {this.handleNextPageClick()}}
+                  >Next</button>
+                </li>
+              </ul>
+            </nav>
           </div>
         ) : (
           <h1>Loading Pokemon</h1>

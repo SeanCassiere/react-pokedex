@@ -15,7 +15,7 @@ export default class PokemonList extends Component {
       nextDisabled: false,
       pokemon: null,
       offset: 0,
-      limit: 12
+      limit: 18
     }
     this.handleNextPageClick = this.handleNextPageClick.bind(this);
     this.handlePrevPageClick = this.handlePrevPageClick.bind(this);
@@ -34,7 +34,7 @@ export default class PokemonList extends Component {
 
   async handleNextPageClick() {
     if (this.state.nextUrl !== null) {
-      const newOffset = this.state.offset+12;
+      const newOffset = this.state.offset+this.state.limit;
       const searchUrl = this.state.url+"?offset="+newOffset+"&limit="+this.state.limit;
       const res = await axios.get(searchUrl);
       this.setState({
@@ -54,7 +54,7 @@ export default class PokemonList extends Component {
 
   async handlePrevPageClick() {
     if (this.state.prevUrl !== null) {
-      const newOffset = this.state.offset-12;
+      const newOffset = this.state.offset-this.state.limit;
       const searchUrl = this.state.url+"?offset="+newOffset+"&limit="+this.state.limit;
       const res = await axios.get(searchUrl);
       this.setState({

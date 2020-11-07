@@ -8,7 +8,9 @@ export default class NavBar extends Component {
         <nav
           className="navbar navbar-expand-md navbar-dark bg-dark fixed-top"
         >
-          <a className="navbar-brand" href="#">Pokedex</a>
+          <div className="container">
+            <a className="navbar-brand" href="/">Pokedex</a>
+          </div>
         </nav>
       </div>
     )

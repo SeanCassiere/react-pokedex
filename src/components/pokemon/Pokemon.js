@@ -39,6 +39,7 @@ export default class Pokemon extends Component {
   
     //Get Pokemon Information
     const pokemonRes = await axios.get(pokemonUrl);
+
     const name = pokemonRes.data.name;
     const imageUrl = pokemonRes.data.sprites.front_shiny;
 
@@ -47,24 +48,27 @@ export default class Pokemon extends Component {
     pokemonRes.data.stats.map(stat => {
       switch (stat.stat.name) {
         case 'hp':
-          hp = stat['base_stat']
+          hp = stat['base_stat'];
           break;
         case 'defense':
-          defense = stat['base_stat']
+          defense = stat['base_stat'];
           break;
         case 'attack':
-          attack = stat['base_stat']
+          attack = stat['base_stat'];
           break;
         case 'speed':
-          speed = stat['base_stat']
+          speed = stat['base_stat'];
           break;
         case 'special-attack':
-          specialAttack = stat['base_stat']
+          specialAttack = stat['base_stat'];
           break;
         case 'special-defense':
-          specialDefense = stat['base_stat']
+          specialDefense = stat['base_stat'];
+          break;
+        default:
           break;
       }
+      return false;
     });
 
     //Convert decimeters to feet .... The  + 0.0001 * 100 / 100 is for rounding to 2 decimal places
@@ -106,8 +110,9 @@ export default class Pokemon extends Component {
       res.data.flavor_text_entries.some(flavor => {
         if (flavor.language.name === 'en') {
           description = flavor.flavor_text;
-          return;
+          return true;
         }
+        return false;
       });
 
       const femaleRate = res.data['gender_rate'];
@@ -159,7 +164,7 @@ export default class Pokemon extends Component {
   render() {
     return (
       <div>
-        
+        {this.state.name}
       </div>
     )
   }

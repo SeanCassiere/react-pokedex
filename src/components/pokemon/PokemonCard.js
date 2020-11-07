@@ -36,8 +36,8 @@ export default class PokemonCard extends Component {
   componentDidMount() {
     const { name, url } = this.props;
     const pokemonIndex = url.split('/')[url.split('/').length - 2];
-    const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`;
-  
+    //const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`;
+    const imageUrl = `/sprites/pokemon/${pokemonIndex}.png?raw=true`;
     this.setState({
       name,
       imageUrl,
@@ -48,7 +48,7 @@ export default class PokemonCard extends Component {
   render() {
     return (
       <div className="col-md-2 col-sm-6 mb-4">
-        <StyledLink to={`pokemon/${this.state.pokemonIndex}`}>
+        <StyledLink to={`/pokemon/${this.state.pokemonIndex}`}>
           <div className="card">
             <h5 className="card-header">{this.state.pokemonIndex}</h5>
             { this.state.imageLoading ? (

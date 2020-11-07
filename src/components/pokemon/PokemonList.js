@@ -11,6 +11,8 @@ export default class PokemonList extends Component {
       url: "https://pokeapi.co/api/v2/pokemon/",
       nextUrl: '',
       prevUrl: '',
+      prevDisabled: true,
+      nextDisabled: false,
       pokemon: null,
       offset: 0,
       limit: 12
@@ -39,7 +41,13 @@ export default class PokemonList extends Component {
         pokemon: res.data['results'],
         offset: newOffset,
         prevUrl: res.data.previous,
-        nextUrl: res.data.next
+        nextUrl: res.data.next,
+        prevDisabled: false
+      });
+    }
+    if (this.state.nextUrl == null ) {
+      this.setState({
+        nextDisabled: true
       });
     }
   }
@@ -48,13 +56,17 @@ export default class PokemonList extends Component {
     if (this.state.prevUrl !== null) {
       const newOffset = this.state.offset-12;
       const searchUrl = this.state.url+"?offset="+newOffset+"&limit="+this.state.limit;
-      //const res = await axios.get(this.state.prevUrl);
       const res = await axios.get(searchUrl);
       this.setState({
         pokemon: res.data['results'],
         offset: newOffset,
         prevUrl: res.data.previous,
         nextUrl: res.data.next
+      });
+    }
+    if (this.state.prevUrl == null ) {
+      this.setState({
+        prevDisabled: true
       });
     }
   }
@@ -78,6 +90,7 @@ export default class PokemonList extends Component {
                     type="button"
                     className="page-link"
                     onClick={() => {this.handlePrevPageClick()}}
+                    disabled={this.state.prevDisabled}
                   >Previous</button>
                 </li>
                 <li className="page-item">
@@ -85,6 +98,7 @@ export default class PokemonList extends Component {
                     type="button"
                     className="page-link"
                     onClick={() => {this.handleNextPageClick()}}
+                    disabled={this.state.nextDisabled}
                   >Next</button>
                 </li>
               </ul>

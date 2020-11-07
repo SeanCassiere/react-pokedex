@@ -201,7 +201,7 @@ export default class Pokemon extends Component {
         <div className="card">
           <div className="card-header">
             <div className="row">
-              <div className="col-1">
+              <div className="col-md-1 col-sm-4">
               <Link
                 to="/"
                 className="btn btn-primary btn-smd"
@@ -209,8 +209,8 @@ export default class Pokemon extends Component {
                 <FaAngleLeft />
               </Link>
               </div>
-              <h5 className="col-4">{this.state.pokemonIndex}</h5>
-              <div className="col-7">
+              <h5 className="col-md-4 col-sm-4">{this.state.pokemonIndex}</h5>
+              <div className="col-md-7 col-sm-4">
                 <div className="float-right">
                   {this.state.types.map(type => {
                     return (

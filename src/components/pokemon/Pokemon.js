@@ -1,7 +1,11 @@
 /* eslint-disable jsx-a11y/aria-role */
 import React, { Component } from 'react'
 
+import { Link } from 'react-router-dom';
+
 import axios from 'axios';
+
+import { FaAngleLeft } from 'react-icons/fa';
 
 const TYPE_COLORS = {
   bug: 'B1C12E',
@@ -187,13 +191,25 @@ export default class Pokemon extends Component {
 
   render() {
     return (
+      <>
+      <div className="row"> 
+        <div className="col">
+          
+        </div>
+      </div>
       <div className="col">
         <div className="card">
           <div className="card-header">
             <div className="row">
-              <h5 className="col-5">
-                  {this.state.pokemonIndex}
-              </h5>
+              <div className="col-1">
+              <Link
+                to="/"
+                className="btn btn-primary btn-smd"
+              >
+                <FaAngleLeft />
+              </Link>
+              </div>
+              <h5 className="col-4">{this.state.pokemonIndex}</h5>
               <div className="col-7">
                 <div className="float-right">
                   {this.state.types.map(type => {
@@ -469,10 +485,11 @@ export default class Pokemon extends Component {
                 href="https://pokeapi.co/"
                 rel="no-follow"
                 className="card-link"
-              >PokeApi</a>
+              > PokeApi</a>
           </div>
         </div>
       </div>
+      </>
     )
   }
 }

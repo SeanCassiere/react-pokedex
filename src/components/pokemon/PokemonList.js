@@ -4,16 +4,7 @@ import axios from 'axios';
 
 import PokemonCard from './PokemonCard';
 
-export default class PokemonList extends Component {
-  state = {
-    url: '',
-    nextUrl: '',
-    prevUrl: '',
-    pokemon: null,
-    offset: 0,
-    limit: 12
-  }
-  
+export default class PokemonList extends Component {  
   constructor(props) {
     super(props);
     this.state = {
@@ -84,17 +75,16 @@ export default class PokemonList extends Component {
               <ul className="pagination">
                 <li className="page-item">
                   <button
+                    type="button"
                     className="page-link"
-                    //tabindex="-1"
                     onClick={() => {this.handlePrevPageClick()}}
-                    //disabled={this.state.prevUrl ? '' : 'disabled'}
                   >Previous</button>
                 </li>
                 <li className="page-item">
                   <button
+                    type="button"
                     className="page-link"
                     onClick={() => {this.handleNextPageClick()}}
-                    //disabled={this.state.nextUrl ? '' : ''}
                   >Next</button>
                 </li>
               </ul>

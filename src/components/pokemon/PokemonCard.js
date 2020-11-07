@@ -50,7 +50,7 @@ export default class PokemonCard extends Component {
       <div className="col-md-2 col-sm-6 mb-4">
         <StyledLink to={`/pokemon/${this.state.pokemonIndex}`}>
           <div className="card">
-            <h5 className="card-header">{this.state.pokemonIndex}</h5>
+            <h5 className="card-header bg-darken-2">{this.state.pokemonIndex}</h5>
             { this.state.imageLoading ? (
               <img
                 alt="Loading..."

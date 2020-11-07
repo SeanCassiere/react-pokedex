@@ -201,22 +201,24 @@ export default class Pokemon extends Component {
         <div className="card">
           <div className="card-header">
             <div className="row">
-              <div className="col-md-1 col-sm-4">
+              <div className="col-md-2 col-sm-4">
               <Link
                 to="/"
-                className="btn btn-primary btn-smd"
+                className="btn btn-primary btn-smd font-weight-bold"
               >
-                <FaAngleLeft />
+                <FaAngleLeft /><span> PokeDex</span>
               </Link>
               </div>
-              <h5 className="col-md-4 col-sm-4">{this.state.pokemonIndex}</h5>
-              <div className="col-md-7 col-sm-4">
+              <div className="col-md-4 col-sm-4">
+                <h4 className="mt-1">{this.state.pokemonIndex}</h4>
+              </div>
+              <div className="col-md-6 col-sm-4">
                 <div className="float-right">
                   {this.state.types.map(type => {
                     return (
                       <span
                         key={type}
-                        className="badge badge-pill mr-1"
+                        className="badge badge-pill mr-1 mt-1"
                         style={{
                           backgroundColor: `#${TYPE_COLORS[type]}`, 
                           color: 'white',

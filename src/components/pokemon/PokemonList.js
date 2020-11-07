@@ -85,7 +85,6 @@ export default class PokemonList extends Component {
                 <li className="page-item">
                   <button
                     className="page-link"
-                    href="#"
                     //tabindex="-1"
                     onClick={() => {this.handlePrevPageClick()}}
                     //disabled={this.state.prevUrl ? '' : 'disabled'}
@@ -94,7 +93,6 @@ export default class PokemonList extends Component {
                 <li className="page-item">
                   <button
                     className="page-link"
-                    href="#"
                     onClick={() => {this.handleNextPageClick()}}
                     //disabled={this.state.nextUrl ? '' : ''}
                   >Next</button>

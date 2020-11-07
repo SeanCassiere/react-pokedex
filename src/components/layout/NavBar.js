@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import { Link } from 'react-router-dom';
 // import styled from 'styled-components';
 
 export default class NavBar extends Component {
@@ -9,7 +11,7 @@ export default class NavBar extends Component {
           className="navbar navbar-expand-md navbar-dark bg-dark fixed-top"
         >
           <div className="container">
-            <a className="navbar-brand" href="/">Pokedex</a>
+            <Link className="navbar-brand" to="/">PokeDex</Link>
           </div>
         </nav>
       </div>

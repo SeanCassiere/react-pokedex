@@ -445,7 +445,20 @@ export default class Pokemon extends Component {
                     <h6 className="float-right">Egg Groups:</h6>
                   </div>
                   <div className="col-md-6">
-                      <h6 className="float-left">{this.state.eggGroups}</h6>
+                      { /*<h6 className="float-left">{this.state.eggGroups}</h6> */ }
+                      <h6 className="float-left">
+                        {this.state.eggGroups.split(', ').map(group => {
+                          return (
+                            <Link
+                              to={`/group/${group}`}
+                              style={{
+                                marginRight: '0.3rem',
+                                textDecoration: 'none'
+                              }}
+                            >{group}</Link>
+                          );
+                        })}
+                      </h6>
                   </div>
                 </div>
                 <div className="row">

@@ -249,7 +249,7 @@ export default class Pokemon extends Component {
                         aria-valuenow="25"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                      ><small>{this.state.stats.hp}%</small></div>
+                      ><small>{this.state.stats.hp}</small></div>
                     </div>
                   </div>
                 </div>
@@ -268,7 +268,7 @@ export default class Pokemon extends Component {
                         aria-valuenow="25"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                      ><small>{this.state.stats.attack}%</small></div>
+                      ><small>{this.state.stats.attack}</small></div>
                     </div>
                   </div>
                 </div>
@@ -287,7 +287,7 @@ export default class Pokemon extends Component {
                         aria-valuenow="25"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                      ><small>{this.state.stats.defense}%</small></div>
+                      ><small>{this.state.stats.defense}</small></div>
                     </div>
                   </div>
                 </div>
@@ -306,7 +306,7 @@ export default class Pokemon extends Component {
                         aria-valuenow="25"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                      ><small>{this.state.stats.speed}%</small></div>
+                      ><small>{this.state.stats.speed}</small></div>
                     </div>
                   </div>
                 </div>
@@ -325,7 +325,7 @@ export default class Pokemon extends Component {
                         aria-valuenow="25"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                      ><small>{this.state.stats.specialAttack}%</small></div>
+                      ><small>{this.state.stats.specialAttack}</small></div>
                     </div>
                   </div>
                 </div>
@@ -344,7 +344,7 @@ export default class Pokemon extends Component {
                         aria-valuenow="25"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                      ><small>{this.state.stats.specialDefense}%</small></div>
+                      ><small>{this.state.stats.specialDefense}</small></div>
                     </div>
                   </div>
                 </div>

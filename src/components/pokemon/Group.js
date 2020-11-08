@@ -34,18 +34,20 @@ export default class Group extends Component {
         {this.state.foundGroup ? (
           <>
           <div className="row">
-            <h1 className="col-12 text-white">
-              {
-                this.state.groupName
-                  .toLowerCase()
-                  .split(' ')
-                  .map(
-                    letter => letter.charAt(0).toUpperCase() + letter.substring(1)
-                  ).join(' ')
-              }
-            </h1>
+            <div className="col-12 badge badge-warning">
+              <h1>
+                {
+                  this.state.groupName
+                    .toLowerCase()
+                    .split(' ')
+                    .map(
+                      letter => letter.charAt(0).toUpperCase() + letter.substring(1)
+                    ).join(' ')
+                }
+              </h1>
+            </div>
           </div>
-          <div className="row">
+          <div className="row" style={{marginTop: '2rem'}}>
             { this.state.pokemonSpecies.map(pokemon => (
               <PokemonCard
                 key={pokemon.name}

@@ -452,6 +452,7 @@ export default class Pokemon extends Component {
                         {this.state.eggGroups.split(', ').map(group => {
                           return (
                             <Link
+                              className="badge badge-warning p-2 font-weight-bold"
                               to={`/group/${group}`}
                               style={{
                                 marginRight: '0.3rem',

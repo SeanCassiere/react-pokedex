@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div className="App bg-dark min-vh-100">
         <NavBar />
-        <div className="container">
+        <div className="container pb-3">
         <Router>
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>

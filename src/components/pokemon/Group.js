@@ -21,7 +21,7 @@ export default class Group extends Component {
     this.setState({ groupName });
     try {
       const res = await axios.get(`https://pokeapi.co/api/v2/egg-group/${groupName.toLowerCase()}`);
-      console.log(res.status)
+      //console.log(res.status)
       const pokemonSpecies = res.data['pokemon_species'];
       
       if ((res.status === 200)) {
@@ -46,9 +46,9 @@ export default class Group extends Component {
       <>
         {!this.state.loading ? (
           <>
-          <div className="row">
+          <div className="row pl-3 pr-3">
             <div className="col-12 badge badge-warning">
-              <h1>
+              <h3>Egg Group:&nbsp;
                 {
                   this.state.groupName
                     .toLowerCase()
@@ -57,7 +57,7 @@ export default class Group extends Component {
                       letter => letter.charAt(0).toUpperCase() + letter.substring(1)
                     ).join(' ')
                 }
-              </h1>
+              </h3>
             </div>
             <div className="row" style={{marginTop: '2rem'}}>
               { this.state.pokemonSpecies.map(pokemon => (

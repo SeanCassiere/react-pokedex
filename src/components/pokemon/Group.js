@@ -73,7 +73,7 @@ export default class Group extends Component {
         ) :  this.state.foundGroup ? (
           <div className="row" style={{paddingTop: '35vh'}}>
             <div className="col-12 text-center">
-              <h3 className="text-muted">Loading...</h3>
+              <h3 className="text-muted">Searching...</h3>
             </div>
           </div>
           ) : (

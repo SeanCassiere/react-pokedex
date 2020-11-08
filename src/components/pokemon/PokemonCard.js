@@ -56,8 +56,8 @@ export default class PokemonCard extends Component {
                 alt="Loading..."
                 src={spinner}
                 style={{
-                  width: '3.5rem',
-                  height: '3.5rem'
+                  width: '86px',
+                  height: '86px'
                 }}
                 className="card-img-top rounded mx-auto d-block mt-2"
               />

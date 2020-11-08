@@ -34,7 +34,16 @@ export default class Group extends Component {
         {this.state.foundGroup ? (
           <>
           <div className="row">
-            <h1 className="col-12">{this.state.groupName}</h1>
+            <h1 className="col-12 text-white">
+              {
+                this.state.groupName
+                  .toLowerCase()
+                  .split(' ')
+                  .map(
+                    letter => letter.charAt(0).toUpperCase() + letter.substring(1)
+                  ).join(' ')
+              }
+            </h1>
           </div>
           <div className="row">
             { this.state.pokemonSpecies.map(pokemon => (
@@ -47,7 +56,11 @@ export default class Group extends Component {
           </div>
           </>
         ) : (
-          <h1>This group does not exist.</h1>
+          <div className="row">
+            <div className="col">
+              <h3 className="text-muted">We had trouble finding the group.</h3>
+            </div>
+          </div>
         )}
       </div>
     )

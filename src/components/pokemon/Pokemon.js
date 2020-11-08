@@ -264,7 +264,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.hp}%`
                         }}
-                        aria-valuenow="25"
+                        aria-valuenow="50"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       ><small>{this.state.stats.hp}</small></div>
@@ -283,7 +283,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.attack}%`
                         }}
-                        aria-valuenow="25"
+                        aria-valuenow="50"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       ><small>{this.state.stats.attack}</small></div>
@@ -302,7 +302,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.defense}%`
                         }}
-                        aria-valuenow="25"
+                        aria-valuenow="50"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       ><small>{this.state.stats.defense}</small></div>
@@ -321,7 +321,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.speed}%`
                         }}
-                        aria-valuenow="25"
+                        aria-valuenow="50"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       ><small>{this.state.stats.speed}</small></div>
@@ -340,7 +340,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.specialAttack}%`
                         }}
-                        aria-valuenow="25"
+                        aria-valuenow="50"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       ><small>{this.state.stats.specialAttack}</small></div>
@@ -359,7 +359,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.specialDefense}%`
                         }}
-                        aria-valuenow="25"
+                        aria-valuenow="50"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       ><small>{this.state.stats.specialDefense}</small></div>
@@ -419,7 +419,7 @@ export default class Pokemon extends Component {
                           backgroundColor: '#C21853'
                         }}
                         aria-valuenow="15"
-                        aria valuemin="0"
+                        aria-valuemin="0"
                         aria-valuemax="100"
                       >
                         <small>{this.state.genderRatioFemale}%</small>
@@ -432,7 +432,7 @@ export default class Pokemon extends Component {
                           backgroundColor: '#1976D2'
                         }}
                         aria-valuenow="15"
-                        aria valuemin="0"
+                        aria-valuemin="0"
                         aria-valuemax="100"
                       >
                         <small>{this.state.genderRatioMale}%</small>
@@ -452,6 +452,7 @@ export default class Pokemon extends Component {
                         {this.state.eggGroups.split(', ').map(group => {
                           return (
                             <Link
+                              key={group}
                               className="badge badge-warning p-2 font-weight-bold"
                               to={`/group/${group}`}
                               style={{

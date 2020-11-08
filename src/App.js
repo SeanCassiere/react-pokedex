@@ -8,6 +8,7 @@ import NavBar from './components/layout/NavBar';
 const Dashboard = lazy(() => import('./components/layout/Dashboard'));
 const Pokemon = lazy(() => import('./components/pokemon/Pokemon'));
 const Group = lazy(() => import('./components/pokemon/Group'));
+const PathNotFound = lazy(() => import('./components/layout/PathNotFound'));
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/pokemon/:pokemonIndex" component={Pokemon} />
               <Route exact path="/group/:groupName" component={Group} />
+              <Route path="/*" component={PathNotFound} />
             </Switch>
           </Suspense>
         </Router>

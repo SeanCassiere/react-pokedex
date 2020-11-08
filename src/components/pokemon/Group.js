@@ -48,7 +48,7 @@ export default class PokemonList extends Component {
           <div className="row" style={{paddingBottom: '2.5rem'}}>
             <div className="col-12">
               
-              <p className="badge badge-warning p-3">Egg Group:&nbsp;
+              <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Egg Group:&nbsp;
                 {
                   this.state.groupName
                     .toLowerCase()

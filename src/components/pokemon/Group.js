@@ -16,8 +16,8 @@ export default class Group extends Component {
   }
 
   async componentDidMount() {
-    const { groupName } = this.props.match.params;
-    //console.log(groupName)
+    const groupName = this.props.match.params.groupName;
+    console.log(groupName);
     try {
       const res = await axios.get(`https://pokeapi.co/api/v2/egg-group/${groupName.toLowerCase()}`);
       const pokemonSpecies = res.data['pokemon_species'];
@@ -36,8 +36,6 @@ export default class Group extends Component {
   render() {
     return (
       <div>
-
-        {/*}
         {this.state.foundGroup ? (
           <>
           
@@ -70,11 +68,10 @@ export default class Group extends Component {
         ) : (
           <div className="row">
             <div className="col">
-              <h3 className="text-muted">We had trouble finding the group.</h3>
+              <h3 className="text-muted">Loading...</h3>
             </div>
           </div>
         )}
-        */}
       </div>
     )
   }

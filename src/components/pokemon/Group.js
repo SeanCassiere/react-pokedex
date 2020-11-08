@@ -17,17 +17,19 @@ export default class Group extends Component {
 
   async componentDidMount() {
     const { groupName } = this.props.match.params;
-    if (groupName === null || groupName === undefined) {
-      console.log('Undefined in URL');
-    }
-    const res = await axios.get(`https://pokeapi.co/api/v2/egg-group/${groupName.toLowerCase()}`);
-    const pokemonSpecies = res.data['pokemon_species'];
-    if ((res.status === 200)) {
-      this.setState({
-        groupName,
-        pokemonSpecies,
-        foundGroup: true
-      });
+    //console.log(groupName)
+    try {
+      const res = await axios.get(`https://pokeapi.co/api/v2/egg-group/${groupName.toLowerCase()}`);
+      const pokemonSpecies = res.data['pokemon_species'];
+      if ((res.status === 200)) {
+        this.setState({
+          foundGroup: true,
+          groupName,
+          pokemonSpecies
+        });
+      }
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -35,14 +37,10 @@ export default class Group extends Component {
     return (
       <div>
 
-        {/*
+        {/*}
         {this.state.foundGroup ? (
           <>
-          { this.state.foundGroup ? 
-          <div className="row">
-
-          </div>
-          }
+          
           
           <div className="row">
             <div className="col-12 badge badge-warning">

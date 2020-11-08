@@ -5,7 +5,7 @@ export default class PathNotFound extends Component {
     return (
       <div className="row">
         <div className="col-12 text-muted">
-          <h1 className="display-4 font-weight-bold">Error 404</h1>
+          <h1 className="display-4 font-weight-bold">Error: Path Error</h1>
           <h5>Path not found</h5>
         </div>
       </div>

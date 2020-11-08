@@ -43,48 +43,50 @@ export default class Group extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="group-results">
-          {!this.state.loading ? (
-            <>
-              <div className="col-12 badge badge-warning">
-                <h1>
-                  {
-                    this.state.groupName
-                      .toLowerCase()
-                      .split(' ')
-                      .map(
-                        letter => letter.charAt(0).toUpperCase() + letter.substring(1)
-                      ).join(' ')
-                  }
-                </h1>
-              </div>
-              <div className="row" style={{marginTop: '2rem'}}>
-                { this.state.pokemonSpecies.map(pokemon => (
-                  <PokemonCard
-                    key={pokemon.name}
-                    name={pokemon.name}
-                    url={pokemon.url}
-                  />
-                )) }
-              </div>
-            </>
-          ) :  this.state.foundGroup ? (
-            <div className="row">
-              <div className="col">
-                <h3 className="text-muted">Loading...</h3>
-              </div>
+      <>
+        {!this.state.loading ? (
+          <>
+          <div className="row">
+            <div className="col-12 badge badge-warning">
+              <h1>
+                {
+                  this.state.groupName
+                    .toLowerCase()
+                    .split(' ')
+                    .map(
+                      letter => letter.charAt(0).toUpperCase() + letter.substring(1)
+                    ).join(' ')
+                }
+              </h1>
             </div>
-            ) : (
-            <div className="row">
-              <div className="col">
-                <h3 className="text-muted">Sorry, we couldn't find " {this.state.groupName} ".</h3>
-              </div>
+            <div className="row" style={{marginTop: '2rem'}}>
+              { this.state.pokemonSpecies.map(pokemon => (
+                <PokemonCard
+                  key={pokemon.name}
+                  name={pokemon.name}
+                  url={pokemon.url}
+                />
+              )) }
             </div>
-            )
-          }
-        </div>
-      </div>
+            </div>
+          </>
+        ) :  this.state.foundGroup ? (
+          <div className="row" style={{paddingTop: '35vh'}}>
+            <div className="col-12 text-center">
+              <h3 className="text-muted">Loading...</h3>
+            </div>
+          </div>
+          ) : (
+          <div className="row" style={{paddingTop: '35vh'}}>
+            <div className="col-12 text-center">
+              <h3 className="text-muted">Sorry, we couldn't find an Egg Group called "{this.state.groupName}".</h3>
+              <hr />
+              <h5 className="text-muted">Please make sure you search for a valid Egg Group.</h5>
+            </div>
+          </div>
+          )
+        }
+      </>
     )
   }
 }

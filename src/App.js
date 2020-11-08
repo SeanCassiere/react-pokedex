@@ -14,7 +14,7 @@ const PathNotFound = lazy(() => import('./components/layout/PathNotFound'));
 class App extends Component {
   render() {
     return (
-      <div className="App bg-dark">
+      <div className="App bg-dark min-vh-100">
         <NavBar />
         <div className="container">
         <Router>

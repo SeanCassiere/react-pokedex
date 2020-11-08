@@ -1,2 +1,2 @@
-# Redirect Group Search
-/group         /group              200
+
+/group         /index.html             200

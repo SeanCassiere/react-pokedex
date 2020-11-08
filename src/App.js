@@ -14,10 +14,10 @@ const PathNotFound = lazy(() => import('./components/layout/PathNotFound'));
 class App extends Component {
   render() {
     return (
-      <div className="App bg-dark min-vh-100">
-        <NavBar />
-        <div className="container pb-3">
+      <div className="App bg-dark min-vh-100 h-100">
+        <div className="container">
         <Router>
+        <NavBar />
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
               <Route exact path="/" component={Dashboard} />

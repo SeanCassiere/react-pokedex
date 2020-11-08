@@ -419,7 +419,7 @@ export default class Pokemon extends Component {
                           backgroundColor: '#C21853'
                         }}
                         aria-valuenow="15"
-                        aria valuemin="0"
+                        aria-valuemin="0"
                         aria-valuemax="100"
                       >
                         <small>{this.state.genderRatioFemale}%</small>
@@ -432,7 +432,7 @@ export default class Pokemon extends Component {
                           backgroundColor: '#1976D2'
                         }}
                         aria-valuenow="15"
-                        aria valuemin="0"
+                        aria-valuemin="0"
                         aria-valuemax="100"
                       >
                         <small>{this.state.genderRatioMale}%</small>
@@ -452,6 +452,7 @@ export default class Pokemon extends Component {
                         {this.state.eggGroups.split(', ').map(group => {
                           return (
                             <Link
+                              key={group}
                               className="badge badge-warning p-2 font-weight-bold"
                               to={`/group/${group}`}
                               style={{

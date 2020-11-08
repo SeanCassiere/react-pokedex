@@ -17,6 +17,9 @@ export default class Group extends Component {
 
   async componentDidMount() {
     const { groupName } = this.props.match.params;
+    if (groupName === null || groupName === undefined) {
+      console.log('Undefined in URL');
+    }
     const res = await axios.get(`https://pokeapi.co/api/v2/egg-group/${groupName.toLowerCase()}`);
     const pokemonSpecies = res.data['pokemon_species'];
     if ((res.status === 200)) {
@@ -31,8 +34,16 @@ export default class Group extends Component {
   render() {
     return (
       <div>
+
+        {/*
         {this.state.foundGroup ? (
           <>
+          { this.state.foundGroup ? 
+          <div className="row">
+
+          </div>
+          }
+          
           <div className="row">
             <div className="col-12 badge badge-warning">
               <h1>
@@ -56,6 +67,7 @@ export default class Group extends Component {
               />
             )) }
           </div>
+            
           </>
         ) : (
           <div className="row">
@@ -64,6 +76,7 @@ export default class Group extends Component {
             </div>
           </div>
         )}
+        */}
       </div>
     )
   }

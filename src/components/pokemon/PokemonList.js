@@ -76,34 +76,41 @@ export default class PokemonList extends Component {
       <>
         { this.state.pokemon ? (
           <div className="row">
-            { this.state.pokemon.map(pokemon => (
-              <PokemonCard
-                key={pokemon.name}
-                name={pokemon.name}
-                url={pokemon.url}
-              />
-            )) }
-            <div className="container">
-              <nav aria-label="pagination">
-                <ul className="pagination">
-                  <li className="page-item">
-                    <button
-                      type="button"
-                      className="page-link"
-                      onClick={() => {this.handlePrevPageClick()}}
-                      disabled={this.state.prevDisabled}
-                    >Previous</button>
-                  </li>
-                  <li className="page-item">
-                    <button
-                      type="button"
-                      className="page-link"
-                      onClick={() => {this.handleNextPageClick()}}
-                      disabled={this.state.nextDisabled}
-                    >Next</button>
-                  </li>
-                </ul>
-              </nav>
+            <div className="col-12">
+              <div className="row">
+                { this.state.pokemon.map(pokemon => (
+                  <PokemonCard
+                    key={pokemon.name}
+                    name={pokemon.name}
+                    url={pokemon.url}
+                  />
+                ))
+                }
+              </div>
+            </div>
+            <div className="col-12">
+              <div className="row p-3">
+                  <nav aria-label="pagination">
+                    <ul className="pagination float-right">
+                      <li className="page-item">
+                        <button
+                          type="button"
+                          className="page-link"
+                          onClick={() => {this.handlePrevPageClick()}}
+                          disabled={this.state.prevDisabled}
+                        >Previous</button>
+                      </li>
+                      <li className="page-item">
+                        <button
+                          type="button"
+                          className="page-link"
+                          onClick={() => {this.handleNextPageClick()}}
+                          disabled={this.state.nextDisabled}
+                        >Next</button>
+                      </li>
+                    </ul>
+                  </nav>
+              </div>
             </div>
           </div>
         ) : (

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
-import PokemonCard from '../pokemon/PokemonCard';
+import PokemonCard from './PokemonCard';
 
-export default class Group extends Component {
+export default class PokemonList extends Component {  
   constructor(props) {
     super(props);
     this.state = {
@@ -45,10 +45,9 @@ export default class Group extends Component {
     return (
       <>
         {!this.state.loading ? (
-          <>
-          <div className="row pl-3 pr-3">
-            <div className="col-12 badge badge-warning">
-              <h3>Egg Group:&nbsp;
+          <div className="row" style={{paddingBottom: '2.5rem'}}>
+            <div className="col-12">
+              <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Egg Group:&nbsp;
                 {
                   this.state.groupName
                     .toLowerCase()
@@ -57,33 +56,37 @@ export default class Group extends Component {
                       letter => letter.charAt(0).toUpperCase() + letter.substring(1)
                     ).join(' ')
                 }
-              </h3>
+              </p>
             </div>
-            <div className="row" style={{marginTop: '2rem'}}>
-              { this.state.pokemonSpecies.map(pokemon => (
-                <PokemonCard
-                  key={pokemon.name}
-                  name={pokemon.name}
-                  url={pokemon.url}
-                />
-              )) }
-            </div>
-            </div>
-          </>
-        ) :  this.state.foundGroup ? (
-          <div className="row" style={{paddingTop: '35vh'}}>
-            <div className="col-12 text-center">
-              <h3 className="text-muted">Searching...</h3>
-            </div>
+              <div className="col-12">
+                <div className="row"  style={{marginTop: '0.5rem'}}>
+                  {this.state.pokemonSpecies.map(pokemon => (
+                    <PokemonCard
+                      key={pokemon.name}
+                      name={pokemon.name}
+                      url={pokemon.url}
+                    />
+                    ))
+                  }
+                </div>
+              </div>
           </div>
-          ) : (
-          <div className="row" style={{paddingTop: '35vh'}}>
-            <div className="col-12 text-center">
-              <h3 className="text-muted">Sorry, we couldn't find an Egg Group called "{this.state.groupName}".</h3>
-              <hr />
-              <h5 className="text-muted">Please make sure you search for a valid Egg Group.</h5>
+        ) : this.state.foundGroup ? (
+            <div className="row" style={{paddingTop: '35vh'}}>
+              <div className="col-12 text-center">
+                <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Searching...</p>
+              </div>
             </div>
-          </div>
+        ) : (
+            <div className="row" style={{paddingTop: '35vh'}}>
+              <div className="col-12 text-center">
+                <p className="p-3 font-weight-bold text-muted" style={{fontSize: '1.6rem', marginBottom: '0.5rem'}}>Sorry, we couldn't find an Egg Group called&nbsp;
+                  <span className="badge badge-warning" style={{fontSize: '1.5rem'}}>{this.state.groupName}</span>.
+                </p>
+                <hr />
+                <p className="font-weight-bold text-muted" style={{fontSize: '1.1rem',marginTop: '1rem'}}>Please make sure you search for an egg group that exists.</p>
+              </div>
+            </div>
           )
         }
       </>

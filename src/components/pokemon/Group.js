@@ -45,10 +45,10 @@ export default class PokemonList extends Component {
     return (
       <>
         {!this.state.loading ? (
-          <div className="row">
+          <div className="row" style={{paddingBottom: '2.5rem'}}>
             <div className="col-12">
-              {/* 
-              <h3 className="badge badge-warning p-3">Egg Group:&nbsp;
+              
+              <p className="badge badge-warning p-3">Egg Group:&nbsp;
                 {
                   this.state.groupName
                     .toLowerCase()
@@ -57,13 +57,13 @@ export default class PokemonList extends Component {
                       letter => letter.charAt(0).toUpperCase() + letter.substring(1)
                     ).join(' ')
                 }
-              </h3>
-              */}
+              </p>
+              
               
             </div>
-            <div className="row">
+            
               <div className="col-12">
-                <div className="row"  style={{marginTop: '2rem'}}>
+                <div className="row"  style={{marginTop: '0.5rem'}}>
                   {this.state.pokemonSpecies.map(pokemon => (
                     <PokemonCard
                       key={pokemon.name}
@@ -74,7 +74,7 @@ export default class PokemonList extends Component {
                   }
                 </div>
               </div>
-            </div>
+            
           </div>
         ) : this.state.foundGroup ? (
             <div className="row" style={{paddingTop: '35vh'}}>

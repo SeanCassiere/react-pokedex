@@ -8,20 +8,22 @@ import NavBar from './components/layout/NavBar';
 const Dashboard = lazy(() => import('./components/layout/Dashboard'));
 const Pokemon = lazy(() => import('./components/pokemon/Pokemon'));
 const Group = lazy(() => import('./components/pokemon/Group'));
+const PathNotFound = lazy(() => import('./components/layout/PathNotFound'));
 
 
 class App extends Component {
   render() {
     return (
-      <div className="App bg-dark">
+      <div className="App bg-dark min-vh-100">
         <NavBar />
-        <div className="container">
+        <div className="container pb-3">
         <Router>
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/pokemon/:pokemonIndex" component={Pokemon} />
               <Route exact path="/group/:groupName" component={Group} />
+              <Route path="/*" component={PathNotFound} />
             </Switch>
           </Suspense>
         </Router>

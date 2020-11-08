@@ -47,7 +47,6 @@ export default class PokemonList extends Component {
         {!this.state.loading ? (
           <div className="row" style={{paddingBottom: '2.5rem'}}>
             <div className="col-12">
-              
               <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Egg Group:&nbsp;
                 {
                   this.state.groupName
@@ -58,10 +57,7 @@ export default class PokemonList extends Component {
                     ).join(' ')
                 }
               </p>
-              
-              
             </div>
-            
               <div className="col-12">
                 <div className="row"  style={{marginTop: '0.5rem'}}>
                   {this.state.pokemonSpecies.map(pokemon => (
@@ -74,20 +70,21 @@ export default class PokemonList extends Component {
                   }
                 </div>
               </div>
-            
           </div>
         ) : this.state.foundGroup ? (
             <div className="row" style={{paddingTop: '35vh'}}>
               <div className="col-12 text-center">
-                <h3 className="text-muted">Searching...</h3>
+                <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Searching...</p>
               </div>
             </div>
         ) : (
             <div className="row" style={{paddingTop: '35vh'}}>
               <div className="col-12 text-center">
-                <h3 className="text-muted">Sorry, we couldn't find an Egg Group called "{this.state.groupName}".</h3>
+                <p className="p-3 font-weight-bold text-muted" style={{fontSize: '1.6rem', marginBottom: '0.5rem'}}>Sorry, we couldn't find an Egg Group called&nbsp;
+                  <span className="badge badge-warning" style={{fontSize: '1.5rem'}}>{this.state.groupName}</span>.
+                </p>
                 <hr />
-                <h5 className="text-muted">Please make sure you search for a valid Egg Group.</h5>
+                <p className="font-weight-bold text-muted" style={{fontSize: '1.1rem',marginTop: '1rem'}}>Please make sure you search for an egg group that exists.</p>
               </div>
             </div>
           )

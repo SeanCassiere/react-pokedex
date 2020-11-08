@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
-import PokemonCard from '../pokemon/PokemonCard';
+import PokemonCard from './PokemonCard';
 
-export default class Group extends Component {
+export default class PokemonList extends Component {  
   constructor(props) {
     super(props);
     this.state = {
@@ -45,10 +45,10 @@ export default class Group extends Component {
     return (
       <>
         {!this.state.loading ? (
-          <>
-          <div className="row pl-3 pr-3">
-            <div className="col-12 badge badge-warning">
-              <h3>Egg Group:&nbsp;
+          <div className="row">
+            <div className="col-12">
+              {/* 
+              <h3 className="badge badge-warning p-3">Egg Group:&nbsp;
                 {
                   this.state.groupName
                     .toLowerCase()
@@ -58,32 +58,38 @@ export default class Group extends Component {
                     ).join(' ')
                 }
               </h3>
+              */}
+              
             </div>
-            <div className="row" style={{marginTop: '2rem'}}>
-              { this.state.pokemonSpecies.map(pokemon => (
-                <PokemonCard
-                  key={pokemon.name}
-                  name={pokemon.name}
-                  url={pokemon.url}
-                />
-              )) }
-            </div>
-            </div>
-          </>
-        ) :  this.state.foundGroup ? (
-          <div className="row" style={{paddingTop: '35vh'}}>
-            <div className="col-12 text-center">
-              <h3 className="text-muted">Searching...</h3>
-            </div>
-          </div>
-          ) : (
-          <div className="row" style={{paddingTop: '35vh'}}>
-            <div className="col-12 text-center">
-              <h3 className="text-muted">Sorry, we couldn't find an Egg Group called "{this.state.groupName}".</h3>
-              <hr />
-              <h5 className="text-muted">Please make sure you search for a valid Egg Group.</h5>
+            <div className="row">
+              <div className="col-12">
+                <div className="row"  style={{marginTop: '2rem'}}>
+                  {this.state.pokemonSpecies.map(pokemon => (
+                    <PokemonCard
+                      key={pokemon.name}
+                      name={pokemon.name}
+                      url={pokemon.url}
+                    />
+                    ))
+                  }
+                </div>
+              </div>
             </div>
           </div>
+        ) : this.state.foundGroup ? (
+            <div className="row" style={{paddingTop: '35vh'}}>
+              <div className="col-12 text-center">
+                <h3 className="text-muted">Searching...</h3>
+              </div>
+            </div>
+        ) : (
+            <div className="row" style={{paddingTop: '35vh'}}>
+              <div className="col-12 text-center">
+                <h3 className="text-muted">Sorry, we couldn't find an Egg Group called "{this.state.groupName}".</h3>
+                <hr />
+                <h5 className="text-muted">Please make sure you search for a valid Egg Group.</h5>
+              </div>
+            </div>
           )
         }
       </>

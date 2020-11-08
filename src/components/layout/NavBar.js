@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { IconContext } from "react-icons"
 import { CgPokemon } from 'react-icons/cg';
 import { FaGithubSquare } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 // import styled from 'styled-components';
 
 export default class NavBar extends Component {
@@ -13,7 +14,8 @@ export default class NavBar extends Component {
         >
           <div className="container">
             <IconContext.Provider value={{ style: { fontSize: '35px', color: "#003A70" } }}>
-              <a className="navbar-brand" href="/"><CgPokemon /> PokeDex</a>
+              <Link to="/" className="navbar-brand"><CgPokemon /> PokeDex</Link>
+              {/* <a className="navbar-brand" href="/"><CgPokemon /> PokeDex</a> */}
             </IconContext.Provider>
             <div className="navbar-nav">
               <IconContext.Provider value={{ style: { fontSize: '18px' } }}>

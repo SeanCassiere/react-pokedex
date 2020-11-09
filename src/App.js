@@ -18,7 +18,13 @@ class App extends Component {
         <div className="container">
         <Router>
         <NavBar />
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={
+            <div className="row" style={{paddingTop: '35vh'}}>
+              <div className="col-12 text-center">
+                <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Loading...</p>
+              </div>
+            </div>
+          }>
             <Switch>
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/pokemon/:pokemonIndex" component={Pokemon} />

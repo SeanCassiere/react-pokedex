@@ -22,7 +22,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/pokemon/:pokemonIndex" component={Pokemon} />
-              <Route exact path="/group/:groupName" component={Group} />
+              <Route path="/group/:groupName/:pokemonIndex?" component={Group} />
               <Route path="/*" component={PathNotFound} />
             </Switch>
           </Suspense>

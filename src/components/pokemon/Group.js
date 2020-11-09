@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
+import queryString from 'query-string'
+
 import PokemonCard from './PokemonCard';
 
 export default class PokemonList extends Component {  
@@ -24,9 +26,9 @@ export default class PokemonList extends Component {
 
   async componentDidMount() {
     const { groupName } = this.props.match.params;
-    const searchParams = this.props.location.search;
+    const searchParams = queryString.parse(this.props.location.search);
     if (this.isEmpty(searchParams) === false) {
-      console.log(this.isEmpty(searchParams))
+      //console.log(this.isEmpty(searchParams))
     }
     
     this.setState({ groupName });

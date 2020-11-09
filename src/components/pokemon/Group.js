@@ -65,31 +65,46 @@ export default class PokemonList extends Component {
         {!this.state.loading ? (
           <div className="row" style={{paddingBottom: '2rem'}}>
             {this.state.prevPage ? (
-            <div className="col-3 col-md-2">
-              <Link
-                to={`/pokemon/${this.state.prevPageId}`}
-                type="button"
-                className="badge badge-primary p-3"
-                style={{fontSize: '1.2rem'}}
-              >
-                <FaAngleLeft /><span className="d-none d-md-inline-block">Back</span>
-              </Link>
-            </div>
+              <>
+              <div className="col-3 col-md-2">
+                <Link
+                  to={`/pokemon/${this.state.prevPageId}`}
+                  type="button"
+                  className="badge badge-primary p-3"
+                  style={{fontSize: '1.2rem'}}
+                >
+                  <FaAngleLeft /><span className="d-none d-md-inline-block">Back</span>
+                </Link>
+              </div>
+              <div className="col-9 col-md-10">
+                <p className="badge badge-warning p-3 float-right" style={{fontSize: '1.3rem'}}>Egg Group:&nbsp;
+                  {
+                    this.state.groupName
+                      .toLowerCase()
+                      .split(' ')
+                      .map(
+                        letter => letter.charAt(0).toUpperCase() + letter.substring(1)
+                      ).join(' ')
+                  }
+                </p>
+              </div>
+              </>
             ) : (
-            <div></div>
+              <>
+              <div className="col-12 col-md-12">
+                <p className="badge badge-warning p-3 float-right" style={{fontSize: '1.3rem'}}>Egg Group:&nbsp;
+                  {
+                    this.state.groupName
+                      .toLowerCase()
+                      .split(' ')
+                      .map(
+                        letter => letter.charAt(0).toUpperCase() + letter.substring(1)
+                      ).join(' ')
+                  }
+                </p>
+              </div>
+              </>
             )}
-            <div className="col-9 col-md-10">
-              <p className="badge badge-warning p-3 float-right" style={{fontSize: '1.3rem'}}>Egg Group:&nbsp;
-                {
-                  this.state.groupName
-                    .toLowerCase()
-                    .split(' ')
-                    .map(
-                      letter => letter.charAt(0).toUpperCase() + letter.substring(1)
-                    ).join(' ')
-                }
-              </p>
-            </div>
             <div className="col-12">
               <div className="row"  style={{marginTop: '0.5rem'}}>
                 {this.state.pokemonSpecies.map(pokemon => (

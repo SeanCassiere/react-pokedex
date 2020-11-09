@@ -186,7 +186,8 @@ export default class Pokemon extends Component {
       weight,
       abilities,
       evs,
-      types
+      types,
+      loading: false
     });
   }
 
@@ -458,7 +459,7 @@ export default class Pokemon extends Component {
                                 <Link
                                   key={group}
                                   className="badge badge-warning p-2 font-weight-bold mb-1 mb-md-0 text-dark-50"
-                                  to={`/group/${group}`}
+                                  to={`/group/${group}?from=${this.state.pokemonIndex}`}
                                   style={{
                                     marginRight: '0.3rem',
                                     textDecoration: 'none'

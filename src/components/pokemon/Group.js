@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 
 import queryString from 'query-string'
+
+import { FaAngleLeft } from 'react-icons/fa';
 
 import PokemonCard from './PokemonCard';
 
@@ -28,10 +32,7 @@ export default class PokemonList extends Component {
     const { groupName } = this.props.match.params;
     const searchParams = queryString.parse(this.props.location.search);
     if ((this.isEmpty(searchParams) === false) && (this.isEmpty(searchParams.from) === false)) {
-      this.setState({
-        prevPage: true,
-        prevPageId: searchParams.from
-      });
+      this.setState({ prevPage: true, prevPageId: searchParams.from });
       //console.log(this.state.prevPage, this.state.prevPageId);
     }
     
@@ -63,8 +64,22 @@ export default class PokemonList extends Component {
       <>
         {!this.state.loading ? (
           <div className="row" style={{paddingBottom: '2rem'}}>
-            <div className="col-12">
-              <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Egg Group:&nbsp;
+            {this.state.prevPage ? (
+            <div className="col-3 col-md-2">
+              <Link
+                to={`/pokemon/${this.state.prevPageId}`}
+                type="button"
+                className="badge badge-primary p-3"
+                style={{fontSize: '1.2rem'}}
+              >
+                <FaAngleLeft /><span className="d-none d-md-inline-block">Back</span>
+              </Link>
+            </div>
+            ) : (
+            <div></div>
+            )}
+            <div className="col-9 col-md-10">
+              <p className="badge badge-warning p-3 float-right" style={{fontSize: '1.3rem'}}>Egg Group:&nbsp;
                 {
                   this.state.groupName
                     .toLowerCase()
@@ -75,18 +90,18 @@ export default class PokemonList extends Component {
                 }
               </p>
             </div>
-              <div className="col-12">
-                <div className="row"  style={{marginTop: '0.5rem'}}>
-                  {this.state.pokemonSpecies.map(pokemon => (
-                    <PokemonCard
-                      key={pokemon.name}
-                      name={pokemon.name}
-                      url={pokemon.url}
-                    />
-                    ))
-                  }
-                </div>
+            <div className="col-12">
+              <div className="row"  style={{marginTop: '0.5rem'}}>
+                {this.state.pokemonSpecies.map(pokemon => (
+                  <PokemonCard
+                    key={pokemon.name}
+                    name={pokemon.name}
+                    url={pokemon.url}
+                  />
+                  ))
+                }
               </div>
+            </div>
           </div>
         ) : this.state.foundGroup ? (
             <div className="row" style={{paddingTop: '35vh'}}>

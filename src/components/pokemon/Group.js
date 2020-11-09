@@ -45,7 +45,7 @@ export default class PokemonList extends Component {
     return (
       <>
         {!this.state.loading ? (
-          <div className="row" style={{paddingBottom: '2.5rem'}}>
+          <div className="row" style={{paddingBottom: '2rem'}}>
             <div className="col-12">
               <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Egg Group:&nbsp;
                 {
@@ -78,7 +78,7 @@ export default class PokemonList extends Component {
               </div>
             </div>
         ) : (
-            <div className="row" style={{paddingTop: '35vh'}}>
+            <div className="row" style={{paddingTop: '30vh'}}>
               <div className="col-12 text-center">
                 <p className="p-3 font-weight-bold text-muted" style={{fontSize: '1.6rem', marginBottom: '0.5rem'}}>Sorry, we couldn't find an Egg Group called&nbsp;
                   <span className="badge badge-warning" style={{fontSize: '1.5rem'}}>{this.state.groupName}</span>.

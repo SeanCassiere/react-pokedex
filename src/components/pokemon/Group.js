@@ -16,8 +16,14 @@ export default class PokemonList extends Component {
     }
   }
 
+  isEmpty(val) {
+    return (val === undefined || val == null || val.length <= 0) ? true : false;
+  }
+
   async componentDidMount() {
     const { groupName } = this.props.match.params;
+    const searchParams = this.props.location.search;
+    console.log(this.isEmpty(searchParams))
     this.setState({ groupName });
     try {
       const res = await axios.get(`https://pokeapi.co/api/v2/egg-group/${groupName.toLowerCase()}`);

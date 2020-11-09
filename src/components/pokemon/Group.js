@@ -27,8 +27,12 @@ export default class PokemonList extends Component {
   async componentDidMount() {
     const { groupName } = this.props.match.params;
     const searchParams = queryString.parse(this.props.location.search);
-    if (this.isEmpty(searchParams) === false) {
-      //console.log(this.isEmpty(searchParams))
+    if ((this.isEmpty(searchParams) === false) && (this.isEmpty(searchParams.from) === false)) {
+      this.setState({
+        prevPage: true,
+        prevPageId: searchParams.from
+      });
+      //console.log(this.state.prevPage, this.state.prevPageId);
     }
     
     this.setState({ groupName });

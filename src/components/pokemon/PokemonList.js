@@ -88,7 +88,7 @@ export default class PokemonList extends Component {
                 }
               </div>
             </div>
-            <div className="col-12">
+            <div className="col-12 pb-4">
               <div className="row p-3">
                   <nav aria-label="pagination">
                     <ul className="pagination float-right">

@@ -14,7 +14,7 @@ export default class NavBar extends Component {
         >
           <div className="container">
             <IconContext.Provider value={{ style: { fontSize: '35px', color: "#003A70" } }}>
-              <Link to="/" className="navbar-brand"><CgPokemon /> PokeDex</Link>
+              <Link to="/" className="navbar-brand"><CgPokemon /> Pokedex</Link>
               {/* <a className="navbar-brand" href="/"><CgPokemon /> PokeDex</a> */}
             </IconContext.Provider>
             <div className="navbar-nav">

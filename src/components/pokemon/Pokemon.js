@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/aria-role */
 import React, { Component } from 'react'
-
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-
 import axios from 'axios';
 
 import Loading from '../common/Loading';
@@ -197,7 +196,17 @@ export default class Pokemon extends Component {
     return (
       <>
       {!this.state.loading ? (
-        <div className="row"> 
+        <div className="row">
+          <Helmet>
+            <title>
+              Pokedex:&nbsp;
+              {this.state.name
+                .toLowerCase()
+                .split(' ')
+                .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
+                .join(' ')}
+            </title>
+          </Helmet>
           <div className="col pb-5">
             <div className="card mb-4">
               <div className="card-header">

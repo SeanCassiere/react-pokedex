@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-
 import axios from 'axios';
-
 import queryString from 'query-string'
 
 import { FaAngleLeft } from 'react-icons/fa';
@@ -66,6 +64,16 @@ export default class PokemonList extends Component {
       <>
         {!this.state.loading ? (
           <div className="row" style={{paddingBottom: '2rem'}}>
+            <Helmet>
+            <title>
+              Pokedex: Egg Group -&nbsp;
+              {this.state.groupName
+                .toLowerCase()
+                .split(' ')
+                .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
+                .join(' ')}
+            </title>
+            </Helmet>
             {this.state.prevPage ? (
               <>
               <div className="col-3 col-md-2">
@@ -121,9 +129,21 @@ export default class PokemonList extends Component {
             </div>
           </div>
         ) : this.state.foundGroup ? (
-            <Loading textItem="Searching..." />
+            <div>
+              <Helmet>
+              <title>
+                Pokedex: Egg Group - Searching
+              </title>
+              </Helmet>
+              <Loading textItem="Searching..." />
+            </div>
         ) : (
             <div className="row" style={{paddingTop: '30vh'}}>
+              <Helmet>
+              <title>
+                Pokedex: Egg Group - Could not find
+              </title>
+              </Helmet>
               <div className="col-12 text-center">
                 <p className="p-3 font-weight-bold text-muted" style={{fontSize: '1.6rem', marginBottom: '0.5rem'}}>Sorry, we couldn't find an Egg Group called&nbsp;
                   <span className="badge badge-warning" style={{fontSize: '1.5rem'}}>{this.state.groupName}</span>.

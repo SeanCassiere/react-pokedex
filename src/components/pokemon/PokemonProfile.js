@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/aria-role */
 import React, { Component } from 'react'
-
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-
 import axios from 'axios';
 
+import Loading from '../layout/Loading';
 import { FaHome } from 'react-icons/fa';
 
 const TYPE_COLORS = {
@@ -52,7 +52,8 @@ export default class Pokemon extends Component {
       genderRatioMale: '',
       genderRatioFemale: '',
       evs: '',
-      hatchSteps: ''
+      hatchSteps: '',
+      foundPokemon: false
     }
   }
 
@@ -64,138 +65,158 @@ export default class Pokemon extends Component {
     const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}/`;
   
     //Get Pokemon Information
-    const pokemonRes = await axios.get(pokemonUrl);
+    //const pokemonRes = await axios.get(pokemonUrl);
+    try {
+      const pokemonRes = await axios.get(pokemonUrl);
+      const name = pokemonRes.data.name;
+      const imageUrl = pokemonRes.data.sprites.front_default;
 
-    const name = pokemonRes.data.name;
-    const imageUrl = pokemonRes.data.sprites.front_default;
+      let { hp, attack, defense, speed, specialAttack, specialDefense } = '';
 
-    let { hp, attack, defense, speed, specialAttack, specialDefense } = '';
-
-    pokemonRes.data.stats.map(stat => {
-      switch (stat.stat.name) {
-        case 'hp':
-          hp = stat['base_stat'];
-          break;
-        case 'defense':
-          defense = stat['base_stat'];
-          break;
-        case 'attack':
-          attack = stat['base_stat'];
-          break;
-        case 'speed':
-          speed = stat['base_stat'];
-          break;
-        case 'special-attack':
-          specialAttack = stat['base_stat'];
-          break;
-        case 'special-defense':
-          specialDefense = stat['base_stat'];
-          break;
-        default:
-          break;
-      }
-      return false;
-    });
-
-    //Convert decimeters to feet .... The  + 0.0001 * 100 / 100 is for rounding to 2 decimal places
-    const height = Math.round((pokemonRes.data.height * 0.32804 + 0.0001) * 100) / 100;
-    
-    // Convert Hectograms to KG
-    const weight = Math.round((pokemonRes.data.weight * 0.1 + 0.0001) * 100) / 100;
-    
-    const types = pokemonRes.data.types.map(type => type.type.name);
-
-    const abilities = pokemonRes.data.abilities.map(ability => {
-      return ability.ability.name
-        .toLowerCase()
-        .split('-')
-        .map(
-          s => s.charAt(0).toUpperCase() + s.substring(1)
-        ).join(' ');
-    })
-
-    const evs = pokemonRes.data.stats.filter(stat => {
-      if (stat.effort > 0) {
-        return true;
-      }
-      return false;
-    }).map(stat => {
-      return `${stat.effort} ${stat.stat.name
-        .toLowerCase()
-        .split('-')
-        .map(
-          s => s.charAt(0).toUpperCase() + s.substring(1)
-        ).join(' ')}`
-    })
-    .join(', ');
-
-
-    // Get Pokemon Description, Catch Rate, EggGroups, Gender Ration, Hatch Steps
-
-    await axios.get(pokemonSpeciesUrl).then(res => {
-      let description = '';
-      res.data.flavor_text_entries.some(flavor => {
-        if (flavor.language.name === 'en') {
-          description = flavor.flavor_text
-            .split(`\f`)
-            .join(' ');
-          return true;
+      pokemonRes.data.stats.map(stat => {
+        switch (stat.stat.name) {
+          case 'hp':
+            hp = stat['base_stat'];
+            break;
+          case 'defense':
+            defense = stat['base_stat'];
+            break;
+          case 'attack':
+            attack = stat['base_stat'];
+            break;
+          case 'speed':
+            speed = stat['base_stat'];
+            break;
+          case 'special-attack':
+            specialAttack = stat['base_stat'];
+            break;
+          case 'special-defense':
+            specialDefense = stat['base_stat'];
+            break;
+          default:
+            break;
         }
         return false;
       });
 
-      const femaleRate = res.data['gender_rate'];
-      const genderRatioFemale = 12.5 * femaleRate;
-      const genderRatioMale = 12.5 * ( 8 - femaleRate ) ;
+      //Convert decimeters to feet .... The  + 0.0001 * 100 / 100 is for rounding to 2 decimal places
+      const height = Math.round((pokemonRes.data.height * 0.32804 + 0.0001) * 100) / 100;
+      
+      // Convert Hectograms to KG
+      const weight = Math.round((pokemonRes.data.weight * 0.1 + 0.0001) * 100) / 100;
+      
+      const types = pokemonRes.data.types.map(type => type.type.name);
 
-      const catchRate = Math.round((100/255) * res.data['capture_rate']);
-
-      const eggGroups = res.data['egg_groups'].map(group => {
-        return group.name
+      const abilities = pokemonRes.data.abilities.map(ability => {
+        return ability.ability.name
           .toLowerCase()
           .split('-')
           .map(
             s => s.charAt(0).toUpperCase() + s.substring(1)
           ).join(' ');
-      }).join(', ')
+      })
 
-      const hatchSteps = 255 * (res.data['hatch_counter'] + 1);
+      const evs = pokemonRes.data.stats.filter(stat => {
+        if (stat.effort > 0) {
+          return true;
+        }
+        return false;
+      }).map(stat => {
+        return `${stat.effort} ${stat.stat.name
+          .toLowerCase()
+          .split('-')
+          .map(
+            s => s.charAt(0).toUpperCase() + s.substring(1)
+          ).join(' ')}`
+      })
+      .join(', ');
 
-      this.setState({
-        description,
-        genderRatioFemale,
-        genderRatioMale,
-        catchRate,
-        eggGroups,
-        hatchSteps
+
+      // Get Pokemon Description, Catch Rate, EggGroups, Gender Ration, Hatch Steps
+
+      await axios.get(pokemonSpeciesUrl).then(res => {
+        let description = '';
+        res.data.flavor_text_entries.some(flavor => {
+          if (flavor.language.name === 'en') {
+            description = flavor.flavor_text
+              .split(`\f`)
+              .join(' ');
+            return true;
+          }
+          return false;
+        });
+
+        const femaleRate = res.data['gender_rate'];
+        const genderRatioFemale = 12.5 * femaleRate;
+        const genderRatioMale = 12.5 * ( 8 - femaleRate ) ;
+
+        const catchRate = Math.round((100/255) * res.data['capture_rate']);
+
+        const eggGroups = res.data['egg_groups'].map(group => {
+          return group.name
+            .toLowerCase()
+            .split('-')
+            .map(
+              s => s.charAt(0).toUpperCase() + s.substring(1)
+            ).join(' ');
+        }).join(', ')
+
+        const hatchSteps = 255 * (res.data['hatch_counter'] + 1);
+
+        this.setState({
+          description,
+          genderRatioFemale,
+          genderRatioMale,
+          catchRate,
+          eggGroups,
+          hatchSteps
+        });
       });
-    });
-    this.setState({
-      imageUrl,
-      pokemonIndex,
-      name,
-      stats: {
-        hp,
-        attack,
-        defense,
-        speed,
-        specialAttack,
-        specialDefense
-      },
-      height,
-      weight,
-      abilities,
-      evs,
-      types,
-      loading: false
-    });
+      this.setState({
+        imageUrl,
+        pokemonIndex,
+        name,
+        stats: {
+          hp,
+          attack,
+          defense,
+          speed,
+          specialAttack,
+          specialDefense
+        },
+        height,
+        weight,
+        abilities,
+        evs,
+        types,
+        loading: false,
+        foundPokemon: true
+      });
+    } catch (err) {
+      const e = err;
+      if (e.response.status === 404) {
+        this.setState ({
+          foundPokemon: false
+        });
+      }
+    }
   }
 
   render() {
     return (
       <>
       {!this.state.loading ? (
-        <div className="row"> 
+        <div className="row">
+          <Helmet>
+            <title>
+              Pokedex:&nbsp;
+              {this.state.name
+                .toLowerCase()
+                .split(' ')
+                .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
+                .join(' ')}
+            </title>
+          </Helmet>
           <div className="col pb-5">
             <div className="card mb-4">
               <div className="card-header">
@@ -458,7 +479,7 @@ export default class Pokemon extends Component {
                               return (
                                 <Link
                                   key={group}
-                                  className="badge badge-warning p-2 font-weight-bold mb-1 mb-md-0 text-dark-50"
+                                  className="badge badge-primary p-2 font-weight-bold mb-1 mb-md-0 text-dark-50"
                                   to={`/group/${group}?from=${this.state.pokemonIndex}`}
                                   style={{
                                     marginRight: '0.3rem',
@@ -512,12 +533,21 @@ export default class Pokemon extends Component {
             </div>
           </div>
         </div>
+      ) : this.state.foundPoke ? (
+        <Loading textItem="Loading..." titleText="Loading" />
       ) : (
-        <div className="row" style={{paddingTop: '35vh'}}>
-          <div className="col-12 text-center">
-            <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Loading...</p>
-          </div>
+        <div className="row" style={{paddingTop: '30vh'}}>
+        <Helmet>
+        <title>
+          Pokedex: Pokemon - Could not find that Pokemon.
+        </title>
+        </Helmet>
+        <div className="col-12 text-center">
+          <p className="p-3 font-weight-bold text-muted" style={{fontSize: '1.6rem', marginBottom: '0.5rem'}}>Sorry, we could not find that <span className="badge badge-warning" style={{fontSize: '1.5rem'}}>Pokemon</span></p>
+          <hr />
+          <p className="font-weight-bold text-muted" style={{fontSize: '1.1rem',marginTop: '1rem'}}>Please make sure you search for a Pokemon that exists.</p>
         </div>
+      </div>
       )}
       </>
     )

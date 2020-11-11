@@ -545,7 +545,7 @@ export default class Pokemon extends Component {
         <div className="col-12 text-center">
           <p className="p-3 font-weight-bold text-muted" style={{fontSize: '1.6rem', marginBottom: '0.5rem'}}>Sorry, we could not find that <span className="badge badge-warning" style={{fontSize: '1.5rem'}}>Pokemon</span></p>
           <hr />
-          <p className="font-weight-bold text-muted" style={{fontSize: '1.1rem',marginTop: '1rem'}}>Please make sure you a Pokemon that exists.</p>
+          <p className="font-weight-bold text-muted" style={{fontSize: '1.1rem',marginTop: '1rem'}}>Please make sure you search for a Pokemon that exists.</p>
         </div>
       </div>
       )}

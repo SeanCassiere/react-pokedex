@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import NavBar from './components/layout/NavBar';
-import Loading from './components/common/Loading';
+import Loading from './layout/common/Loading';
 const Dashboard = lazy(() => import('./components/layout/Dashboard'));
 const Pokemon = lazy(() => import('./components/pokemon/Pokemon'));
 const Group = lazy(() => import('./components/pokemon/Group'));

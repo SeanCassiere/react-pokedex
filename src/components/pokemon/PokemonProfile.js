@@ -59,7 +59,8 @@ export default class Pokemon extends Component {
 
   async componentDidMount() {
     const { pokemonIndex } = this.props.match.params;
-    
+    this.setState({ foundPokemon: true });
+
     //URLS for Pokemon Information
     const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}/`;
     const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}/`;
@@ -533,7 +534,7 @@ export default class Pokemon extends Component {
             </div>
           </div>
         </div>
-      ) : this.state.foundPoke ? (
+      ) : this.state.foundPokemon ? (
         <Loading textItem="Loading..." titleText="Loading" />
       ) : (
         <div className="row" style={{paddingTop: '30vh'}}>

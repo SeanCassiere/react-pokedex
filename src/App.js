@@ -20,7 +20,7 @@ class App extends Component {
         <Router>
         <NavBar />
           <Suspense fallback={
-            <Loading textItem="Loading..." />
+            <Loading textItem="Loading..." titleText="Loading Pokedex" />
           }>
             <Switch>
               <Route exact path="/" component={Dashboard} />

@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import NavBar from './components/layout/NavBar';
-import Loading from './components/layout/Loading';
-const Dashboard = lazy(() => import('./components/layout/Dashboard'));
-const PokemonProfile = lazy(() => import('./components/pokemon/PokemonProfile'));
-const Group = lazy(() => import('./components/pokemon/Group'));
-const PathNotFound = lazy(() => import('./components/layout/PathNotFound'));
+import NavBar from './components/layout/NavBar' /* webpackChunkName: "navbar" */;
+import Loading from './components/layout/Loading'  /* webpackChunkName: "loadingBadge" */;
+const Dashboard = lazy(() => import('./components/layout/Dashboard' /* webpackChunkName: "dashboard" */));
+const PokemonProfile = lazy(() => import('./components/pokemon/PokemonProfile' /* webpackChunkName: "pokemonProfile" */));
+const Group = lazy(() => import('./components/pokemon/Group' /* webpackChunkName: "groupSearch" */));
+const PathNotFound = lazy(() => import('./components/layout/PathNotFound' /* webpackChunkName: "err404" */));
 
 
 class App extends Component {

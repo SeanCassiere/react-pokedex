@@ -7,7 +7,7 @@ import './App.css';
 import NavBar from './components/layout/NavBar';
 import Loading from './components/layout/Loading';
 const Dashboard = lazy(() => import('./components/layout/Dashboard'));
-const Pokemon = lazy(() => import('./components/pokemon/Pokemon'));
+const Pokemon = lazy(() => import('./components/pokemon/PokemonProfile'));
 const Group = lazy(() => import('./components/pokemon/Group'));
 const PathNotFound = lazy(() => import('./components/layout/PathNotFound'));
 

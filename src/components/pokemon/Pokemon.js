@@ -4,8 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import Loading from '../common/Loading';
-
+import Loading from '../layout/Loading';
 import { FaHome } from 'react-icons/fa';
 
 const TYPE_COLORS = {

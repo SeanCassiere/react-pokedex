@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
 import axios from 'axios';
 
-import Loading from '../common/Loading';
+import Loading from '../layout/Loading';
 import PokemonCard from './PokemonCard';
 
 export default class PokemonList extends Component {  

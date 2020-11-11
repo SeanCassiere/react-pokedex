@@ -5,10 +5,8 @@ import axios from 'axios';
 import queryString from 'query-string'
 
 import { FaAngleLeft } from 'react-icons/fa';
-
 import PokemonCard from './PokemonCard';
-
-import Loading from '../common/Loading';
+import Loading from '../layout/Loading';
 
 export default class PokemonList extends Component {  
   constructor(props) {

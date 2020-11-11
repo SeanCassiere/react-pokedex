@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
+import Loading from '../common/Loading';
 import PokemonCard from './PokemonCard';
 
 export default class PokemonList extends Component {  
@@ -114,7 +115,7 @@ export default class PokemonList extends Component {
             </div>
           </div>
         ) : (
-          <h1>Loading Pokemon</h1>
+          <Loading />
         ) }
       </>
     )

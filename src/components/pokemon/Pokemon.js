@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
+import Loading from '../common/Loading';
+
 import { FaHome } from 'react-icons/fa';
 
 const TYPE_COLORS = {
@@ -513,11 +515,7 @@ export default class Pokemon extends Component {
           </div>
         </div>
       ) : (
-        <div className="row" style={{paddingTop: '35vh'}}>
-          <div className="col-12 text-center">
-            <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Loading...</p>
-          </div>
-        </div>
+        <Loading />
       )}
       </>
     )

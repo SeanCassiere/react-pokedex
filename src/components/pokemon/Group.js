@@ -133,7 +133,7 @@ export default class PokemonList extends Component {
                 Pokedex: Egg Group - Searching
               </title>
               </Helmet>
-              <Loading textItem="Searching..." />
+              <Loading textItem="Searching..." titleText="Loading" />
             </div>
         ) : (
             <div className="row" style={{paddingTop: '30vh'}}>

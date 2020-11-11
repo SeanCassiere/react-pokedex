@@ -523,7 +523,7 @@ export default class Pokemon extends Component {
           </div>
         </div>
       ) : (
-        <Loading textItem="Loading..." />
+        <Loading textItem="Loading..." titleText="Loading" />
       )}
       </>
     )

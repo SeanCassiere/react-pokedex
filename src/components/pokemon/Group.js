@@ -10,6 +10,8 @@ import { FaAngleLeft } from 'react-icons/fa';
 
 import PokemonCard from './PokemonCard';
 
+import Loading from '../common/Loading';
+
 export default class PokemonList extends Component {  
   constructor(props) {
     super(props);
@@ -119,11 +121,7 @@ export default class PokemonList extends Component {
             </div>
           </div>
         ) : this.state.foundGroup ? (
-            <div className="row" style={{paddingTop: '35vh'}}>
-              <div className="col-12 text-center">
-                <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Searching...</p>
-              </div>
-            </div>
+            <Loading textItem="Searching..." />
         ) : (
             <div className="row" style={{paddingTop: '30vh'}}>
               <div className="col-12 text-center">

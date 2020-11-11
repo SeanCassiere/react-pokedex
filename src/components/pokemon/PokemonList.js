@@ -115,7 +115,7 @@ export default class PokemonList extends Component {
             </div>
           </div>
         ) : (
-          <Loading />
+          <Loading textItem="Loading..."/>
         ) }
       </>
     )

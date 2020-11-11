@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import NavBar from './components/layout/NavBar';
+import Loading from './components/common/Loading';
 const Dashboard = lazy(() => import('./components/layout/Dashboard'));
 const Pokemon = lazy(() => import('./components/pokemon/Pokemon'));
 const Group = lazy(() => import('./components/pokemon/Group'));
@@ -19,11 +20,7 @@ class App extends Component {
         <Router>
         <NavBar />
           <Suspense fallback={
-            <div className="row" style={{paddingTop: '35vh'}}>
-              <div className="col-12 text-center">
-                <p className="badge badge-warning p-3" style={{fontSize: '1.6rem'}}>Loading...</p>
-              </div>
-            </div>
+            <Loading textItem="Loading..." />
           }>
             <Switch>
               <Route exact path="/" component={Dashboard} />

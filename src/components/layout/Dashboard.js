@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import PokemonList from '../pokemon/PokemonList';
+
 import { Helmet } from 'react-helmet';
+
+import PokemonList from '../pokemon/PokemonList'/* webpackChunkName: "pokemonList" */;
 
 export default class Dashboard extends Component {
   render() {

@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import queryString from 'query-string';
 
 import { FaAngleLeft } from 'react-icons/fa';
-import PokemonCard from './PokemonCard';
-import Loading from '../layout/Loading';
+import PokemonCard from './PokemonCard'/* webpackChunkName: "pokemonCard" */;
+import Loading from '../layout/Loading'/* webpackChunkName: "loading" */;
 
 export default class PokemonList extends Component {  
   constructor(props) {
@@ -29,7 +28,7 @@ export default class PokemonList extends Component {
   async componentDidMount() {
     const groupName = this.props.eggGroupName;
     const { from } = this.props.searchParams;
-    console.log(groupName, from)
+    
     if ((this.isEmpty(from) === false) && (this.isEmpty(from) === false)) {
       this.setState({ prevPage: true, prevPageId: from });
     }

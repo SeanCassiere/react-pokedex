@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
-import EggGroupList from '../pokemon/EggGroupList';
-//import { Helmet } from 'react-helmet';
+
+import EggGroupList from '../pokemon/EggGroupList'/* webpackChunkName: "eggGroupList" */;
 
 export default class EggGroup extends Component {
   render() {

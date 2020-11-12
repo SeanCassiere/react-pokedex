@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Loading from '../layout/Loading';
-import PokemonCard from './PokemonCard';
+import Loading from '../layout/Loading'/* webpackChunkName: "loading" */;
+import PokemonCard from './PokemonCard'/* webpackChunkName: "pokemonCard" */;
 
 export default class PokemonList extends Component {  
   constructor(props) {

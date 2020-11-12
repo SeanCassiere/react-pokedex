@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { IconContext } from "react-icons"
+
 import { CgPokemon } from 'react-icons/cg';
 import { FaGithubSquare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-// import styled from 'styled-components';
 
 export default class NavBar extends Component {
   render() {
